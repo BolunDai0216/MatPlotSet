@@ -28,3 +28,13 @@ def save_shape(xs, ys, filename, folder="./"):
         pickle.dump(data, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
     print(f"saved at {folder}{filename}.pickle")
+
+
+def read_shape(filename):
+    with open("filename", "rb") as handle:
+        data = pickle.load(handle)
+
+    xs = data["xs"]
+    ys = data["ys"]
+
+    return xs, ys

@@ -15,6 +15,7 @@ def generate_shape(
     x_offset=0.0,
     y_offset=0.0,
     seed=None,
+    return_polar=False,
 ):
     if seed is not None:
         np.random.seed(seed)
@@ -33,7 +34,10 @@ def generate_shape(
     cart_xs = scale * rhos * np.cos(phis) + x_offset
     cart_ys = scale * rhos * np.sin(phis) + y_offset
 
-    return cart_xs, cart_ys
+    if return_polar:
+        return cart_xs, cart_ys, scale * rhos, phis
+    else:
+        return cart_xs, cart_ys
 
 
 def save_shape(xs, ys, filename, folder="./"):
